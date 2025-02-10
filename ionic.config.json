@@ -1,0 +1,7 @@
+{
+  "name": "SurveyEngine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

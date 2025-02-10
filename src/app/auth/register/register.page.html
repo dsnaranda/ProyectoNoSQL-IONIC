@@ -1,0 +1,194 @@
+<ion-content class="ion-padding">
+  <div class="container">
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-title class="title">SurveyEngine</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h2 class="subtitle">Registro</h2>
+        <p class="text">Si no tienes una cuenta</p>
+        <p>
+          Tú puedes
+          <a routerLink="/login" class="register-link">Iniciar Sesión!</a>
+        </p>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+        <!-- <form class="form"> -->
+
+         <!-- Correo -->
+          <ion-label   for="correo" color="dark">Correo electrónico</ion-label>
+            <ion-item lines="full">
+              <span slot="start" class="input-icon">
+                <svg width="18" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M1.49414 0.676514H15.5059C16.3297 0.676514 17 1.34679 17 2.17065V10.8294C17 11.6533 16.3297 12.3236 15.5059 12.3236H1.49414C0.670271 12.3236 0 11.6533 0 10.8294V2.17065C0 1.34679 0.670271 0.676514 1.49414 0.676514ZM1.68914 1.67261L1.88856 1.83866L7.90719 6.85037C8.25071 7.13638 8.74936 7.13638 9.09281 6.85037L15.1114 1.83866L15.3109 1.67261H1.68914ZM16.0039 2.39172L11.1001 6.47514L16.0039 9.73878V2.39172ZM1.49414 11.3275H15.5059C15.7465 11.3275 15.9478 11.1559 15.9939 10.9287L10.3014 7.14017L9.73018 7.61583C9.37377 7.9126 8.93685 8.06099 8.49997 8.06099C8.06308 8.06099 7.62619 7.9126 7.26976 7.61583L6.69853 7.14017L1.00605 10.9286C1.05221 11.1559 1.25348 11.3275 1.49414 11.3275ZM0.996094 9.73878L5.89993 6.47517L0.996094 2.39172V9.73878Z"
+                    fill="black" />
+                </svg>
+              </span>
+              <ion-input formControlName="correo" id="correo" type="correo" placeholder="Ingrese su correo" ></ion-input>
+            </ion-item>
+
+             <!-- Nombres -->
+          <ion-label  for="nombre" color="dark">Nombres</ion-label>
+          <ion-item lines="full">
+            <span slot="start" class="input-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9 11C10.1046 11 11 10.1046 11 9C11 7.89543 10.1046 7 9 7C7.89543 7 7 7.89543 7 9C7 10.1046 7.89543 11 9 11Z"
+                    stroke="black" stroke-width="1.5" />
+                <path
+                    d="M13 15C13 16.105 13 17 9 17C5 17 5 16.105 5 15C5 13.895 6.79 13 9 13C11.21 13 13 13.895 13 15Z"
+                    stroke="black" stroke-width="1.5" />
+                <path
+                    d="M22 12C22 15.771 22 17.657 20.828 18.828C19.656 19.999 17.771 20 14 20H10C6.229 20 4.343 20 3.172 18.828C2.001 17.656 2 15.771 2 12C2 8.229 2 6.343 3.172 5.172C4.344 4.001 6.229 4 10 4H14C17.771 4 19.657 4 20.828 5.172C21.298 5.642 21.579 6.226 21.748 7M19 12H15M19 9H14M19 15H16"
+                    stroke="black" stroke-linecap="round" />
+            </svg>
+            </span>
+            <ion-input formControlName="nombre" id="nombres" type="text" placeholder="Ingrese su nombre" class="input-style" ></ion-input>
+          </ion-item>
+
+           <!-- Apellidos -->
+           <ion-label  for="apellido" color="dark">Apellidos</ion-label>
+           <ion-item lines="full">
+             <span slot="start" class="input-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9 11C10.1046 11 11 10.1046 11 9C11 7.89543 10.1046 7 9 7C7.89543 7 7 7.89543 7 9C7 10.1046 7.89543 11 9 11Z"
+                    stroke="black" stroke-width="1.5" />
+                <path
+                    d="M13 15C13 16.105 13 17 9 17C5 17 5 16.105 5 15C5 13.895 6.79 13 9 13C11.21 13 13 13.895 13 15Z"
+                    stroke="black" stroke-width="1.5" />
+                <path
+                    d="M22 12C22 15.771 22 17.657 20.828 18.828C19.656 19.999 17.771 20 14 20H10C6.229 20 4.343 20 3.172 18.828C2.001 17.656 2 15.771 2 12C2 8.229 2 6.343 3.172 5.172C4.344 4.001 6.229 4 10 4H14C17.771 4 19.657 4 20.828 5.172C21.298 5.642 21.579 6.226 21.748 7M19 12H15M19 9H14M19 15H16"
+                    stroke="black" stroke-linecap="round" />
+            </svg>
+             </span>
+             <ion-input formControlName="apellido" id="apellido" type="text" placeholder="Ingrese su apellido" class="input-style"></ion-input>
+           </ion-item>
+         
+            <!-- Telefono -->
+          <ion-label  for="telefono" color="dark">Número de Teléfono</ion-label>
+          <ion-item lines="full">
+            <span slot="start" class="input-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M5 20V19C5 17.1435 5.7375 15.363 7.05025 14.0503C8.36301 12.7375 10.1435 12 12 12M12 12C13.8565 12 15.637 12.7375 16.9497 14.0503C18.2625 15.363 19 17.1435 19 19V20M12 12C13.0609 12 14.0783 11.5786 14.8284 10.8284C15.5786 10.0783 16 9.06087 16 8C16 6.93913 15.5786 5.92172 14.8284 5.17157C14.0783 4.42143 13.0609 4 12 4C10.9391 4 9.92172 4.42143 9.17157 5.17157C8.42143 5.92172 8 6.93913 8 8C8 9.06087 8.42143 10.0783 9.17157 10.8284C9.92172 11.5786 10.9391 12 12 12Z"
+                    stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <!-- <ion-input formControlName="telefono" id="telefono" name="custom-phone-field" type="text" placeholder="Ingrese su número telefónico" class="input-style" maxlength="10" pattern="[0-9]*" (input)="validatePhoneNumber($event)" autocomplete="off" ></ion-input> -->
+            <ion-input formControlName="telefono" id="telefono" name="custom-phone-field" type="text" placeholder="Ingrese su número telefónico" class="input-style" maxlength="10" pattern="[0-9]*" (ionInput)="validatePhoneNumber($event)" autocomplete="off"></ion-input>
+
+          </ion-item>
+        
+        
+          <!-- Contraseña -->
+          <ion-label for="clave" color="dark">Contraseña</ion-label>
+          <ion-item lines="full">
+            <span slot="start" class="input-icon">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13.0032 7.2296V4.53742C13.0104 3.31927 12.5239 2.14798 11.6553 1.29383C10.8156 0.457706 9.71638 0 8.5523 0C8.53428 0 8.51265 0 8.49463 0C6.01149 0.00360399 3.99325 2.03625 3.99325 4.53742V7.2296C3.05622 7.34132 2.37146 8.12699 2.37146 9.07844V15.1259C2.37146 16.1531 3.19317 17 4.2203 17H12.7798C13.8069 17 14.6286 16.1531 14.6286 15.1259V9.07844C14.625 8.13059 13.9403 7.34132 13.0032 7.2296ZM4.71045 4.53742H4.71405C4.71405 2.43269 6.41153 0.709985 8.49824 0.709985H8.50184C9.49294 0.706381 10.4444 1.09922 11.1472 1.79839C11.8788 2.52279 12.286 3.51028 12.2788 4.53742V7.2332H11.4859V4.53742C11.4931 3.71931 11.1688 2.93364 10.5885 2.35701C10.0407 1.8092 9.29832 1.49926 8.52346 1.49926H8.50184C6.84401 1.49926 5.50332 2.86156 5.50332 4.53381V7.2332H4.71045V4.53742ZM10.7687 4.53742V7.2332H6.22772V4.53742C6.22772 3.26161 7.24405 2.22366 8.50544 2.22366H8.52707C9.11091 2.22366 9.67313 2.45792 10.0876 2.87238C10.5273 3.31206 10.776 3.91393 10.7687 4.53742ZM13.9403 15.1367C13.9403 15.7674 13.4285 16.2792 12.7978 16.2792H4.23472C3.60402 16.2792 3.09226 15.7674 3.09226 15.1367V9.09646C3.09226 8.46576 3.60402 7.954 4.23472 7.954H12.7978C13.4285 7.954 13.9403 8.46576 13.9403 9.09646V15.1367Z"
+                    fill="black" />
+                <path
+                    d="M9.74516 11.8932C9.58659 11.3345 9.07843 10.9525 8.49818 10.9525C7.78099 10.9525 7.19714 11.5328 7.19714 12.2536C7.19714 12.8338 7.57917 13.342 8.13778 13.5005V14.5096C8.13778 14.7079 8.29996 14.87 8.49818 14.87C8.6964 14.87 8.85858 14.7079 8.85858 14.5096V13.5005C9.54694 13.3023 9.94699 12.5815 9.74516 11.8932ZM8.49818 12.8302C8.17743 12.8302 7.91794 12.5707 7.91794 12.2499C7.91794 11.9292 8.17743 11.6697 8.49818 11.6697C8.81894 11.6697 9.07842 11.9292 9.07842 12.2499C9.07842 12.5707 8.81894 12.8302 8.49818 12.8302Z"
+                    fill="black" />
+            </svg>
+            </span>
+            <ion-input formControlName="clave" id="clave" placeholder="Ingrese su contraseña" class="input-style" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required >
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+
+             <!-- Confirmar Contraseña -->
+             <ion-label for="password" color="dark">Confirmar contraseña</ion-label>
+             <ion-item lines="full">
+               <span slot="start" class="input-icon">
+                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path
+                       d="M13.0032 7.2296V4.53742C13.0104 3.31927 12.5239 2.14798 11.6553 1.29383C10.8156 0.457706 9.71638 0 8.5523 0C8.53428 0 8.51265 0 8.49463 0C6.01149 0.00360399 3.99325 2.03625 3.99325 4.53742V7.2296C3.05622 7.34132 2.37146 8.12699 2.37146 9.07844V15.1259C2.37146 16.1531 3.19317 17 4.2203 17H12.7798C13.8069 17 14.6286 16.1531 14.6286 15.1259V9.07844C14.625 8.13059 13.9403 7.34132 13.0032 7.2296ZM4.71045 4.53742H4.71405C4.71405 2.43269 6.41153 0.709985 8.49824 0.709985H8.50184C9.49294 0.706381 10.4444 1.09922 11.1472 1.79839C11.8788 2.52279 12.286 3.51028 12.2788 4.53742V7.2332H11.4859V4.53742C11.4931 3.71931 11.1688 2.93364 10.5885 2.35701C10.0407 1.8092 9.29832 1.49926 8.52346 1.49926H8.50184C6.84401 1.49926 5.50332 2.86156 5.50332 4.53381V7.2332H4.71045V4.53742ZM10.7687 4.53742V7.2332H6.22772V4.53742C6.22772 3.26161 7.24405 2.22366 8.50544 2.22366H8.52707C9.11091 2.22366 9.67313 2.45792 10.0876 2.87238C10.5273 3.31206 10.776 3.91393 10.7687 4.53742ZM13.9403 15.1367C13.9403 15.7674 13.4285 16.2792 12.7978 16.2792H4.23472C3.60402 16.2792 3.09226 15.7674 3.09226 15.1367V9.09646C3.09226 8.46576 3.60402 7.954 4.23472 7.954H12.7978C13.4285 7.954 13.9403 8.46576 13.9403 9.09646V15.1367Z"
+                       fill="black" />
+                   <path
+                       d="M9.74516 11.8932C9.58659 11.3345 9.07843 10.9525 8.49818 10.9525C7.78099 10.9525 7.19714 11.5328 7.19714 12.2536C7.19714 12.8338 7.57917 13.342 8.13778 13.5005V14.5096C8.13778 14.7079 8.29996 14.87 8.49818 14.87C8.6964 14.87 8.85858 14.7079 8.85858 14.5096V13.5005C9.54694 13.3023 9.94699 12.5815 9.74516 11.8932ZM8.49818 12.8302C8.17743 12.8302 7.91794 12.5707 7.91794 12.2499C7.91794 11.9292 8.17743 11.6697 8.49818 11.6697C8.81894 11.6697 9.07842 11.9292 9.07842 12.2499C9.07842 12.5707 8.81894 12.8302 8.49818 12.8302Z"
+                       fill="black" />
+               </svg>
+               </span>
+               <ion-input  formControlName="confirmpassword" id="confirmpassword" placeholder="Confirme su contraseña" class="input-style" >
+                 <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+               </ion-input>
+             </ion-item>
+
+          <!-- Botón de iniciar sesión -->
+          <ion-button id="present-error-alert" (click)="onSubmit()" expand="block" class="login-button"> Regístrate</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+<!-- Error alert for empty fields -->
+<ion-alert
+  *ngIf="errorAlertVisible"
+  header="¡Error!"
+  subHeader="Por favor, llena todos los campos."
+  message="¡Complete todos los campos requeridos!"
+  [buttons]="['Aceptar']"
+  [isOpen]="errorAlertVisible"
+  (didDismiss)="errorAlertVisible = false"
+></ion-alert>
+
+<!-- Error alert for invalid email -->
+<ion-alert
+  *ngIf="invalidEmailAlertVisible"
+  header="¡Error!"
+  subHeader="Correo inválido"
+  message="El correo electrónico no es válido."
+  [buttons]="['Aceptar']"
+  [isOpen]="invalidEmailAlertVisible"
+  (didDismiss)="invalidEmailAlertVisible = false"
+></ion-alert>
+
+<!-- Error alert for invalid phone -->
+<ion-alert
+  *ngIf="invalidPhoneAlertVisible"
+  header="¡Error!"
+  subHeader="Teléfono inválido"
+  message="El número de teléfono no es válido."
+  [buttons]="['Aceptar']"
+  [isOpen]="invalidPhoneAlertVisible"
+  (didDismiss)="invalidPhoneAlertVisible = false"
+></ion-alert>
+
+<!-- Error alert for password mismatch -->
+<ion-alert
+  *ngIf="passwordMismatchAlertVisible"
+  header="¡Error!"
+  subHeader="Contraseñas no coinciden"
+  message="Las contraseñas no coinciden."
+  [buttons]="['Aceptar']"
+  [isOpen]="passwordMismatchAlertVisible"
+  (didDismiss)="passwordMismatchAlertVisible = false"
+></ion-alert>
+
+<!-- Error alert for invalid password -->
+<ion-alert
+  *ngIf="invalidPasswordAlertVisible"
+  header="¡Error!"
+  subHeader="Contraseña no válida"
+  message="La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial."
+  [buttons]="['Aceptar']"
+  [isOpen]="invalidPasswordAlertVisible"
+  (didDismiss)="invalidPasswordAlertVisible = false"
+></ion-alert>
+
+<!-- Success alert -->
+<ion-alert
+  *ngIf="successAlertVisible"
+  header="¡Registro exitoso!"
+  message="El usuario ha sido registrado correctamente."
+  [buttons]="['Aceptar']"
+  [isOpen]="successAlertVisible"
+  (didDismiss)="successAlertVisible = false"
+></ion-alert>
+
+  
+</ion-content>

@@ -1,0 +1,102 @@
+<ion-content class="ion-padding">
+  <div class="container">
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-title class="title">SurveyEngine</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h2 class="subtitle">Inicia Sesión</h2>
+        <p class="text">Si no tienes una cuenta</p>
+        <p>
+          Tú puedes
+          <a (click)="navigateToRegister()" class="register-link">Regístrate ahora!</a>
+        </p>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+        <!-- <form class="form"> -->
+
+         <!-- Correo -->
+          <ion-label for="correo" color="dark">Correo</ion-label>
+            <ion-item lines="full">
+              <span slot="start" class="input-icon">
+                <svg width="18" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M1.49414 0.676514H15.5059C16.3297 0.676514 17 1.34679 17 2.17065V10.8294C17 11.6533 16.3297 12.3236 15.5059 12.3236H1.49414C0.670271 12.3236 0 11.6533 0 10.8294V2.17065C0 1.34679 0.670271 0.676514 1.49414 0.676514ZM1.68914 1.67261L1.88856 1.83866L7.90719 6.85037C8.25071 7.13638 8.74936 7.13638 9.09281 6.85037L15.1114 1.83866L15.3109 1.67261H1.68914ZM16.0039 2.39172L11.1001 6.47514L16.0039 9.73878V2.39172ZM1.49414 11.3275H15.5059C15.7465 11.3275 15.9478 11.1559 15.9939 10.9287L10.3014 7.14017L9.73018 7.61583C9.37377 7.9126 8.93685 8.06099 8.49997 8.06099C8.06308 8.06099 7.62619 7.9126 7.26976 7.61583L6.69853 7.14017L1.00605 10.9286C1.05221 11.1559 1.25348 11.3275 1.49414 11.3275ZM0.996094 9.73878L5.89993 6.47517L0.996094 2.39172V9.73878Z"
+                    fill="black" />
+                </svg>
+              </span>
+              <ion-input formControlName="correo" id="correo" type="correo" placeholder="Ingrese su correo" class="input-style"></ion-input>
+            </ion-item>
+          
+
+          <!-- Contraseña -->
+          <ion-label for="password" color="dark">Contraseña</ion-label>
+          <ion-item lines="full">
+            <span slot="start" class="input-icon">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13.0032 7.2296V4.53742C13.0104 3.31927 12.5239 2.14798 11.6553 1.29383C10.8156 0.457706 9.71638 0 8.5523 0C8.53428 0 8.51265 0 8.49463 0C6.01149 0.00360399 3.99325 2.03625 3.99325 4.53742V7.2296C3.05622 7.34132 2.37146 8.12699 2.37146 9.07844V15.1259C2.37146 16.1531 3.19317 17 4.2203 17H12.7798C13.8069 17 14.6286 16.1531 14.6286 15.1259V9.07844C14.625 8.13059 13.9403 7.34132 13.0032 7.2296ZM4.71045 4.53742H4.71405C4.71405 2.43269 6.41153 0.709985 8.49824 0.709985H8.50184C9.49294 0.706381 10.4444 1.09922 11.1472 1.79839C11.8788 2.52279 12.286 3.51028 12.2788 4.53742V7.2332H11.4859V4.53742C11.4931 3.71931 11.1688 2.93364 10.5885 2.35701C10.0407 1.8092 9.29832 1.49926 8.52346 1.49926H8.50184C6.84401 1.49926 5.50332 2.86156 5.50332 4.53381V7.2332H4.71045V4.53742ZM10.7687 4.53742V7.2332H6.22772V4.53742C6.22772 3.26161 7.24405 2.22366 8.50544 2.22366H8.52707C9.11091 2.22366 9.67313 2.45792 10.0876 2.87238C10.5273 3.31206 10.776 3.91393 10.7687 4.53742ZM13.9403 15.1367C13.9403 15.7674 13.4285 16.2792 12.7978 16.2792H4.23472C3.60402 16.2792 3.09226 15.7674 3.09226 15.1367V9.09646C3.09226 8.46576 3.60402 7.954 4.23472 7.954H12.7978C13.4285 7.954 13.9403 8.46576 13.9403 9.09646V15.1367Z"
+                    fill="black" />
+                <path
+                    d="M9.74516 11.8932C9.58659 11.3345 9.07843 10.9525 8.49818 10.9525C7.78099 10.9525 7.19714 11.5328 7.19714 12.2536C7.19714 12.8338 7.57917 13.342 8.13778 13.5005V14.5096C8.13778 14.7079 8.29996 14.87 8.49818 14.87C8.6964 14.87 8.85858 14.7079 8.85858 14.5096V13.5005C9.54694 13.3023 9.94699 12.5815 9.74516 11.8932ZM8.49818 12.8302C8.17743 12.8302 7.91794 12.5707 7.91794 12.2499C7.91794 11.9292 8.17743 11.6697 8.49818 11.6697C8.81894 11.6697 9.07842 11.9292 9.07842 12.2499C9.07842 12.5707 8.81894 12.8302 8.49818 12.8302Z"
+                    fill="black" />
+            </svg>
+            </span>
+            <ion-input formControlName="password" id="password" placeholder="Ingrese su contraseña" class="input-style">
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+
+          <div class="recuperar-contrasena">
+            <button type="button" (click)="navigateToRecovery()">Recuperar contraseña</button>
+          </div>
+          
+          
+                
+          <!-- Botón de iniciar sesión -->
+          <ion-button type="submit" expand="block" class="login-button">Inicia Sesión</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Alerta de carga -->
+<ion-alert
+*ngIf="loadingAlertVisible"
+header="Cargando..."
+message="Estamos procesando tu solicitud"
+[buttons]="[]"
+[isOpen]="loadingAlertVisible"
+></ion-alert>
+
+<!-- Alerta de éxito -->
+<ion-alert
+*ngIf="successAlertVisible"
+header="¡Bienvenido!"
+message="Has iniciado sesión correctamente."
+[buttons]="['Aceptar']"
+[isOpen]="successAlertVisible"
+(didDismiss)="successAlertVisible = false"
+></ion-alert>
+
+<!-- Alerta de error -->
+<ion-alert
+*ngIf="errorAlertVisible"
+header="Error"
+message="Hubo un problema al iniciar sesión, por favor intenta nuevamente."
+[buttons]="['Aceptar']"
+[isOpen]="errorAlertVisible"
+(didDismiss)="errorAlertVisible = false"
+></ion-alert>
+
+<!-- Alerta de formulario inválido -->
+<ion-alert
+*ngIf="invalidFormAlertVisible"
+header="Formulario inválido"
+message="Por favor, completa todos los campos correctamente."
+[buttons]="['Aceptar']"
+[isOpen]="invalidFormAlertVisible"
+(didDismiss)="invalidFormAlertVisible = false"
+></ion-alert>
+
+</ion-content>
