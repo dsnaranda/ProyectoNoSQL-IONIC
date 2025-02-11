@@ -1,98 +1,95 @@
-ion-content {
-    --background: #f3f4f6;
-  
-    ion-grid {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 24px;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 16px;
+}
+
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.empty-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.create-button {
+  background-color: #535B86;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create-button:hover {
+  background-color: #1e40af;
+}
+
+.encuestas-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  background-color: #f3f4f6;;
+}
+
+@media (min-width: 768px) {
+  .encuestas-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  ion-header {
-    ion-toolbar {
-      --background: #ffffff;
-      
-      h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #181818;
-        
-        .text-primary {
-          color: #4E5A9F;
-          transition: color 0.3s ease;
-          
-          &:hover {
-            color: #3c4882;
-          }
-        }
-      }
-    }
+}
+
+@media (min-width: 1024px) {
+  .encuestas-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  ion-card {
-    background: rgba(221, 224, 236, 0.35);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    margin: 8px;
-    transition: all 0.3s ease;
-  
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.15);
-    }
-  
-    ion-card-header {
-      padding: 16px;
-  
-      ion-card-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #384D6C;
-      }
-  
-      ion-card-subtitle {
-        color: #6B7280;
-        font-size: 0.9rem;
-        margin-top: 4px;
-      }
-    }
-  
-    ion-card-content {
-      padding: 0 16px 16px;
-      
-      p {
-        color: #6B7280;
-        font-size: 0.9rem;
-        margin: 8px 0;
-      }
-    }
-  
-    ion-button {
-      --color: #6B7280;
-      margin: 8px;
-      transition: all 0.3s ease;
-  
-      &:hover {
-        --color: #4E5A9F;
-        --background: rgba(78, 90, 159, 0.1);
-      }
-    }
-  }
-  
-  .text-header {
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.75rem;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  @media (max-width: 768px) {
-    ion-grid {
-      padding: 12px;
-    }
-  
-    ion-card {
-      margin: 8px 0;
-    }
-  }
+}
+
+.encuesta-card {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.encuesta-card h2 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.encuesta-card p {
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+ion-button {
+  --background: transparent;
+  --color: #6b7280;
+}
+
+ion-button:hover {
+  --color: #1e3a8a;
+}
+
+
+
+

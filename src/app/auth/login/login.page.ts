@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
             // Esperar 2 segundos antes de redirigir
             setTimeout(() => {
               this.successAlertVisible = false;
-              this.router.navigate(['/register']);
+              this.router.navigate(['/perfil']);
             }, 2000);
           } else {
             this.errorAlertVisible = true;
