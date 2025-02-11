@@ -68,15 +68,19 @@ export class ChangePasswordPage implements OnInit {
         this.mismatchAlertVisible = true;
         return;
       }
-      
+  
       this.loadingAlertVisible = true;
       const usuarioId = this.changedata.id;
       this.loginService.cambiarClave(usuarioId, clave).subscribe({
         next: () => {
           this.loadingAlertVisible = false;
           this.successAlertVisible = true;
-          this.router.navigate(['/login']);
           this.loginService.deleteCHANGE();
+  
+          // Agregar un pequeño retraso antes de redirigir
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000); // 2 segundos para que la alerta sea visible antes de navegar
         },
         error: () => {
           this.loadingAlertVisible = false;
@@ -87,6 +91,7 @@ export class ChangePasswordPage implements OnInit {
       this.formErrorAlertVisible = true;
     }
   }
+  
 
  
 }

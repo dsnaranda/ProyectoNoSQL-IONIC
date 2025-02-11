@@ -3,4 +3,8 @@ export interface Encuesta {
     titulo: string;
     cantidadDeRespuestas: number;
     objetivo: string;
+    duracion: String;
+    fecha_creacion?: Date;
+    preguntas: [];
+    estado: string;
 }

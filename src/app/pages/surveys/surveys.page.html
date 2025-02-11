@@ -1,34 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <h1 class="text-header">
-        Bienvenido a <span class="text-primary">SurveyEngine!</span>
-      </h1>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container">
+  <div *ngIf="encuestas.length === 0" class="empty-container">
+    <p class="empty-text">No hay encuestas por el momento</p>
+    <ion-button routerLink="/aside/create-survey" class="create-button">Puedes crear tu primera encuesta</ion-button>
+  </div>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" sizeSm="6" sizeLg="4" *ngFor="let encuesta of encuestas">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ encuesta.titulo }}</ion-card-title>
-            <ion-card-subtitle>ID {{ encuesta.id }}</ion-card-subtitle>
-          </ion-card-header>
-
-          <ion-card-content>
-            <p>{{ encuesta.cantidadDeRespuestas }} Respuestas</p>
-            
-            <div class="ion-text-end">
-              <ion-button fill="clear" [routerLink]="['/aside/surveys/surveyID']">
-                <ion-icon name="ellipsis-horizontal"></ion-icon>
-              </ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div *ngIf="encuestas.length > 0" class="encuestas-grid">
+    <ion-card *ngFor="let encuesta of encuestas" class="encuesta-card">
+      <ion-card-header>
+        <ion-card-title>{{ encuesta.titulo }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>ID:</strong> {{ encuesta.id }}</p>
+        <p><strong>Objetivo:</strong> {{ encuesta.objetivo }}</p>
+        <p>
+          <strong>{{ encuesta['cantidadDeRespuestas'] || 0 }} Respuestas</strong> -
+          <strong>Fecha creación:</strong> {{ encuesta.fecha_creacion | date:'dd/MM/yyyy' }}
+        </p>
+      </ion-card-content>
+      <ion-item lines="none" class="menu-container">
+        <ion-button fill="clear" (click)="openMenu($event, encuesta.id)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
 </ion-content>
+
+<ion-popover [isOpen]="isMenuOpen" [event]="menuEvent" (didDismiss)="isMenuOpen = false">
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="verEncuesta(selectedEncuestaId)">
+        Ver encuesta
+      </ion-item>
+      <ion-item button (click)="verDashboard(selectedEncuestaId)">
+        Ver resultados de la encuesta
+      </ion-item>
+      <ion-item button (click)="compartirEncuesta(selectedEncuestaId)">
+        Compartir encuesta
+      </ion-item>
+      
+      
+    </ion-list>
+  </ion-content>
+</ion-popover>

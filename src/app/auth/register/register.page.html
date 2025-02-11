@@ -1,5 +1,4 @@
-<ion-content class="ion-padding">
-  <div class="container">
+<ion-content class="ion-padding container" fullscreen="true">
     <ion-card class="login-card">
       <ion-card-header>
         <ion-card-title class="title">SurveyEngine</ion-card-title>
@@ -95,7 +94,7 @@
                     fill="black" />
             </svg>
             </span>
-            <ion-input formControlName="clave" id="clave" placeholder="Ingrese su contraseña" class="input-style" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required >
+            <ion-input type="password" formControlName="clave" id="clave" placeholder="Ingrese su contraseña" class="input-style" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required >
               <ion-input-password-toggle slot="end"></ion-input-password-toggle>
             </ion-input>
           </ion-item>
@@ -113,7 +112,7 @@
                        fill="black" />
                </svg>
                </span>
-               <ion-input  formControlName="confirmpassword" id="confirmpassword" placeholder="Confirme su contraseña" class="input-style" >
+               <ion-input type="password"  formControlName="confirmpassword" id="confirmpassword" placeholder="Confirme su contraseña" class="input-style" >
                  <ion-input-password-toggle slot="end"></ion-input-password-toggle>
                </ion-input>
              </ion-item>
@@ -123,7 +122,6 @@
         </form>
       </ion-card-content>
     </ion-card>
-  </div>
 
 <!-- Error alert for empty fields -->
 <ion-alert
