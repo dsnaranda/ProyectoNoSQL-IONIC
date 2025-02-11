@@ -1,0 +1,63 @@
+<ion-content class="perfil-container">
+  <!-- Título -->
+  <h1>Bienvenido a <span>SurveyEngine!</span></h1>
+  <p class="mt-3">Perfil de Usuario</p>
+
+  <div class="perfil-header">
+    <!-- Imagen de perfil + Información -->
+    <div class="perfil-info">
+      <div class="perfil-img">
+        <img [src]="foto" alt="Foto de perfil">
+      </div>
+      <div class="user-info">
+        <p>{{ userProfile.nombre }} {{ userProfile.apellido }}</p>
+        <span>{{ userProfile.rol }} - {{ userProfile.usuario }}</span>
+      </div>
+    </div>
+
+   <!-- Botón Modificar -->
+   <ion-button color="dark" (click)="enableForm()" class="btn-modificar">
+    Modificar
+  </ion-button>
+</div>
+
+  <!-- Formulario -->
+  <form class="perfil-form">
+    <div>
+      <label>Nombres</label>
+      <ion-input type="text" placeholder="eg. Alba" [(ngModel)]="userProfile.nombre" [disabled]="isDisabled" name="nombre"></ion-input>
+    </div>
+
+    <div>
+      <label>Apellidos</label>
+      <ion-input type="text" placeholder="eg. Vite" [(ngModel)]="userProfile.apellido" [disabled]="isDisabled" name="apellido"></ion-input>
+    </div>
+
+    <div class="col-span-2">
+      <label>Usuario</label>
+      <ion-input type="text" placeholder="eg. Albavite" [(ngModel)]="userProfile.usuario" [disabled]="isDisabled" name="usuario"></ion-input>
+    </div>
+
+    <div>
+      <label>
+        <ion-icon name="mail-outline"></ion-icon>
+        Correo Electronico
+      </label>
+      <ion-input type="email" placeholder="eg. correo@example.com" [(ngModel)]="userProfile.correo" [disabled]="true" name="correo"></ion-input>
+    </div>
+
+    <div>
+      <label>
+        <ion-icon name="call-outline"></ion-icon>
+        Teléfono
+      </label>
+      <ion-input type="tel" placeholder="eg. 0991234567" [(ngModel)]="userProfile.telefono" [disabled]="true" name="telefono"></ion-input>
+    </div>
+  </form>
+
+  <!-- Botones de acción -->
+  <div *ngIf="!isDisabled" class="perfil-actions">
+    <ion-button color="danger" (click)="cancel()" class="btn-cancelar">Cancelar</ion-button>
+    <ion-button color="secondary" (click)="saveData()" class="btn-guardar">Guardar cambios</ion-button>
+  </div>
+</ion-content>
