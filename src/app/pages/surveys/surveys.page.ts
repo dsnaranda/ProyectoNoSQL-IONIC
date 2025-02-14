@@ -244,11 +244,12 @@ export class SurveysPage implements OnInit {
     await alert.present();
   }
 
-  async mostrarAlerta(header: string, message: string) {
+  async mostrarAlerta(titulo: string, mensaje: string, icon: 'success' | 'warning' | 'info' = 'info') {
     const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK']
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK'],
+      cssClass: icon === 'success' ? 'alert-success' : icon === 'warning' ? 'alert-warning' : 'alert-info'
     });
     await alert.present();
   }

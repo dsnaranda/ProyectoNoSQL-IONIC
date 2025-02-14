@@ -30,7 +30,8 @@ export class SurveyIDPage implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private navCtrl: NavController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
