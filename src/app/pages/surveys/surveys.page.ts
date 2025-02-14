@@ -210,7 +210,10 @@ export class SurveysPage implements OnInit {
 
   async compartirEncuesta(id: number | null) {
     if (id === null) return;
-    const url = `${window.location.origin}/respuesta/${id}`;
+    
+    // Crear deep link URL con el esquema personalizado
+    const deepLink = `surveyengine://respuesta/${id}`;
+    
     const alert = await this.alertController.create({
       header: 'Compartir Encuesta',
       message: 'Copia el enlace y compártelo:',
@@ -218,7 +221,7 @@ export class SurveysPage implements OnInit {
         {
           name: 'link',
           type: 'text',
-          value: url,
+          value: deepLink,
           attributes: { readonly: true }
         }
       ],
@@ -231,7 +234,7 @@ export class SurveysPage implements OnInit {
           text: 'Copiar enlace',
           handler: async () => {
             try {
-              await navigator.clipboard.writeText(url);
+              await navigator.clipboard.writeText(deepLink);
               this.mostrarAlerta('Copiado', 'El enlace ha sido copiado al portapapeles.');
             } catch {
               this.mostrarAlerta('Error', 'No se pudo copiar el enlace.');
@@ -240,15 +243,16 @@ export class SurveysPage implements OnInit {
         }
       ]
     });
-
+  
     await alert.present();
   }
 
-  async mostrarAlerta(header: string, message: string) {
+  async mostrarAlerta(titulo: string, mensaje: string, icon: 'success' | 'warning' | 'info' = 'info') {
     const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK']
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK'],
+      cssClass: icon === 'success' ? 'alert-success' : icon === 'warning' ? 'alert-warning' : 'alert-info'
     });
     await alert.present();
   }
