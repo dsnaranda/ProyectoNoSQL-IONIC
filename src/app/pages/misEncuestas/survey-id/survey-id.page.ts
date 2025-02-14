@@ -80,20 +80,16 @@ export class SurveyIDPage implements OnInit {
     });
   }
 
-  async compartirEncuesta(id: number | null) {
-    if (id === null) return;
-    
-    // Crear deep link URL con el esquema personalizado
-    const deepLink = `surveyengine://respuesta/${id}`;
-    
-    const alert = await this.alertController.create({
+  async compartirEncuesta(id: number) {
+    const url = `${window.location.origin}/respuesta/${id}`;
+    const alert = await this.alertCtrl.create({
       header: 'Compartir Encuesta',
       message: 'Copia el enlace y compártelo:',
       inputs: [
         {
           name: 'link',
           type: 'text',
-          value: deepLink,
+          value: url,
           attributes: { readonly: true }
         }
       ],
@@ -106,7 +102,7 @@ export class SurveyIDPage implements OnInit {
           text: 'Copiar enlace',
           handler: async () => {
             try {
-              await navigator.clipboard.writeText(deepLink);
+              await navigator.clipboard.writeText(url);
               this.mostrarAlerta('Copiado', 'El enlace ha sido copiado al portapapeles.');
             } catch {
               this.mostrarAlerta('Error', 'No se pudo copiar el enlace.');
@@ -115,7 +111,7 @@ export class SurveyIDPage implements OnInit {
         }
       ]
     });
-  
+
     await alert.present();
   }
 
