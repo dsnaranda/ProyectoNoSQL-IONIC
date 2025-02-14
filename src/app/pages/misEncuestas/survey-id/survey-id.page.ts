@@ -81,7 +81,7 @@ export class SurveyIDPage implements OnInit {
   }
 
   async compartirEncuesta(id: number) {
-    const url = `${window.location.origin}/respuesta/${id}`;
+    const url = `https://proyecto-no-sql-ionic.vercel.app/respuesta/${id}`;
     const alert = await this.alertCtrl.create({
       header: 'Compartir Encuesta',
       message: 'Copia el enlace y compártelo:',
