@@ -1,45 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Surveys</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="container">
+  <!-- Total de Resultados Encontrados -->
+  <div class="total-resultados">
+    <ion-label>Total de Resultados Encontrados: {{ totalEncuestas }}</ion-label>
+  </div>
+
+  <form [formGroup]="surveyForm">
+    <div class="filtro-container">
+      <!-- Dropdown para seleccionar el área -->
+      <ion-item class="combo">
+        <ion-label>Seleccionar Área</ion-label>
+        <ion-select formControlName="selectedArea" (ionChange)="filtrarPorArea()" placeholder="Selecciona un área">
+          <ion-select-option *ngFor="let area of listaAreas" [value]="area">{{ area }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Dropdown para seleccionar el estado -->
+      <ion-item class="combo">
+        <ion-label>Seleccionar Estado</ion-label>
+        <ion-select formControlName="selectedEstado" (ionChange)="filtrarPorArea()" placeholder="Selecciona un estado">
+          <ion-select-option value="Habilitada">Habilitada</ion-select-option>
+          <ion-select-option value="Deshabilitada">Deshabilitada</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </form>
+
+  <!-- Botón para limpiar filtros -->
+  <div class="clear-filters">
+    <ion-button (click)="limpiarFiltros()">Limpiar Filtros</ion-button>
+  </div>
+
   <div *ngIf="encuestas.length === 0" class="empty-container">
     <p class="empty-text">No hay encuestas por el momento</p>
-    <ion-button routerLink="/aside/create-survey" class="create-button">Puedes crear tu primera encuesta</ion-button>
+    <ion-button routerLink="/aside/create-survey" class="create-button">
+      Puedes crear tu primera encuesta
+    </ion-button>
   </div>
 
   <div *ngIf="encuestas.length > 0" class="encuestas-grid">
-    <ion-card *ngFor="let encuesta of encuestas" class="encuesta-card">
+    <ion-card *ngFor="let encuesta of encuestas; let i = index" class="encuesta-card">
       <ion-card-header>
-        <ion-card-title>{{ encuesta.titulo }}</ion-card-title>
+        <ion-card-title class="title">{{ encuesta.titulo }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p><strong>ID:</strong> {{ encuesta.id }}</p>
+        <p class="sub"><strong>ID:</strong> {{ encuesta.id }}</p>
         <p><strong>Objetivo:</strong> {{ encuesta.objetivo }}</p>
         <p>
-          <strong>{{ encuesta['cantidadDeRespuestas'] || 0 }} Respuestas</strong> -
+          <strong>{{ encuesta['cantidadDeRespuestas'] || 0 }} Respuestas</strong> - 
           <strong>Fecha creación:</strong> {{ encuesta.fecha_creacion | date:'dd/MM/yyyy' }}
         </p>
       </ion-card-content>
+
+      <!-- Botón de opciones dentro de la tarjeta -->
       <ion-item lines="none" class="menu-container">
-        <ion-button fill="clear" (click)="openMenu($event, encuesta.id)">
+        <ion-button fill="clear" [id]="'popover-button-' + i">
           <ion-icon name="ellipsis-vertical"></ion-icon>
         </ion-button>
+
+        <ion-popover trigger="{{'popover-button-' + i}}" [dismissOnSelect]="true" side="right" alignment="start">
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item button (click)="verEncuesta(encuesta.id)">
+                  Ver encuesta
+                </ion-item>
+                <ion-item button (click)="verDashboard(encuesta.id)">
+                  Ver resultados de la encuesta
+                </ion-item>
+                <ion-item button (click)="compartirEncuesta(encuesta.id)">
+                  Compartir encuesta
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-item>
     </ion-card>
   </div>
 </ion-content>
-
-<ion-popover [isOpen]="isMenuOpen" [event]="menuEvent" (didDismiss)="isMenuOpen = false">
-  <ion-content>
-    <ion-list>
-      <ion-item button (click)="verEncuesta(selectedEncuestaId)">
-        Ver encuesta
-      </ion-item>
-      <ion-item button (click)="verDashboard(selectedEncuestaId)">
-        Ver resultados de la encuesta
-      </ion-item>
-      <ion-item button (click)="compartirEncuesta(selectedEncuestaId)">
-        Compartir encuesta
-      </ion-item>
-      
-      
-    </ion-list>
-  </ion-content>
-</ion-popover>

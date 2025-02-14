@@ -25,6 +25,7 @@ export class LoginPage implements OnInit {
   successAlertVisible = false; 
   errorAlertVisible = false; 
   invalidFormAlertVisible = false; 
+  wrongPasswordAlertVisible = false;
 
   loginForm!: FormGroup;
 
@@ -58,7 +59,7 @@ export class LoginPage implements OnInit {
             // Esperar 2 segundos antes de redirigir
             setTimeout(() => {
               this.successAlertVisible = false;
-              this.router.navigate(['/perfil']);
+              this.router.navigate(['/aside/perfil']);
             }, 2000);
           } else {
             this.errorAlertVisible = true;

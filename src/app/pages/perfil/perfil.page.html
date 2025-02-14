@@ -1,3 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="perfil-container">
   <!-- Título -->
   <h1>Bienvenido a <span>SurveyEngine!</span></h1>
@@ -6,8 +17,8 @@
   <div class="perfil-header">
     <!-- Imagen de perfil + Información -->
     <div class="perfil-info">
-      <div class="perfil-img">
-        <img [src]="foto" alt="Foto de perfil">
+      <div class="perfil-img" (click)="showPhotoOptions()">
+        <img [src]="userProfile.foto" alt="Foto de perfil">
       </div>
       <div class="user-info">
         <p>{{ userProfile.nombre }} {{ userProfile.apellido }}</p>
@@ -20,6 +31,9 @@
     Modificar
   </ion-button>
 </div>
+
+  <!-- Input para seleccionar archivo (oculto) -->
+  <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
 
   <!-- Formulario -->
   <form class="perfil-form">
@@ -60,4 +74,16 @@
     <ion-button color="danger" (click)="cancel()" class="btn-cancelar">Cancelar</ion-button>
     <ion-button color="secondary" (click)="saveData()" class="btn-guardar">Guardar cambios</ion-button>
   </div>
+
+  <!-- Botón para cambiar contraseña -->
+  <div class="perfil-actions">
+    <ion-button color="primary" (click)="confirmarcambiarClave()">Cambiar Contraseña</ion-button>
+  </div>
+
+  <!-- Animación de carga -->
+  <ion-loading
+    [isOpen]="loading"
+    message="Subiendo imagen..."
+    spinner="crescent"
+  ></ion-loading>
 </ion-content>

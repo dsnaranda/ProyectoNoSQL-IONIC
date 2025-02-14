@@ -51,7 +51,7 @@ export class LosspasswordPage implements OnInit {
         this.successAlertVisible.next(true);
         setTimeout(() => {
           if (this.successAlertVisible.value) {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/change']);
           }
         }, 2000);
       },

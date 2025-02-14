@@ -18,7 +18,8 @@ export class LoginService {
 
   private apiUrl = 'https://backend-encuestas.vercel.app/usuarios';
   //private apiUrl = 'http://localhost:3001/usuarios';
-  private apiUrlLocal = 'http://localhost:3001/usuarios';
+  //private apiUrlLocal = 'http://localhost:3001/usuarios';
+  private apiUrlLocal = 'https://backendencuestas.onrender.com/usuarios';
 
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
 

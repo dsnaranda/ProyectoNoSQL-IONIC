@@ -1,0 +1,87 @@
+<ion-content>
+  <div class="form-container">
+    <!-- Si la encuesta se ha cargado se muestra el formulario -->
+    <form [formGroup]="RespuestaForm" *ngIf="encuestaSeleccionada">
+      <!-- Título de la encuesta -->
+      <div class="encuesta-titulo">
+        <label for="titulo-encuesta">
+          {{ encuestaSeleccionada.titulo || 'Título no disponible' }}
+        </label>
+      </div>
+
+      <!-- Objetivo de la encuesta -->
+      <div class="encuesta-objetivo">
+        <label for="objetivo-encuesta">
+          {{ encuestaSeleccionada.objetivo || 'Objetivo no disponible' }}
+        </label>
+      </div>
+
+      <!-- Campo para correo -->
+      <div class="correo-container">
+        <div class="icon-wrapper">
+          <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.49414 0.676514H15.5059C16.3297 0.676514 17 1.34679 17 2.17065V10.8294C17 11.6533 16.3297 12.3236 15.5059 12.3236H1.49414C0.670271 12.3236 0 11.6533 0 10.8294V2.17065C0 1.34679 0.670271 0.676514 1.49414 0.676514ZM1.68914 1.67261L1.88856 1.83866L7.90719 6.85037C8.25071 7.13638 8.74936 7.13638 9.09281 6.85037L15.1114 1.83866L15.3109 1.67261H1.68914Z" fill="black"/>
+          </svg>
+        </div>
+        <input formControlName="correo" id="correo" type="correo" placeholder="Ingrese su correo" />
+      </div>
+
+      <!-- Sección para mostrar las preguntas -->
+      <div *ngIf="preguntasDetalles.length === 0" class="loading">
+        Cargando preguntas...
+      </div>
+
+      <div *ngIf="preguntasDetalles.length > 0" class="preguntas-container">
+        <ng-container *ngFor="let pregunta of preguntasDetalles">
+          <!-- Componente para preguntas de respuesta larga (texto) -->
+          <app-largeanswer
+            *ngIf="pregunta.tipoPregunta === 'texto'"
+            [pregunta]="pregunta"
+            [disabled]="disabled"
+            [respondiendo]="true"
+            (respuesta)="guardarRespuesta(pregunta.id, $event, 'texto')">
+          </app-largeanswer>
+
+          <!-- Componente para preguntas de escala (liker scale) -->
+          <app-likerscale
+            *ngIf="pregunta.tipoPregunta === 'escala'"
+            [pregunta]="pregunta"
+            [disabled]="disabled"
+            [respondiendo]="true"
+            (respuesta)="guardarRespuesta(pregunta.id, $event.valor, 'escala')">
+          </app-likerscale>
+
+          <!-- Componente para preguntas de selección (multiopción) -->
+          <app-multiopcion
+            *ngIf="pregunta.tipoPregunta === 'seleccion'"
+            [pregunta]="pregunta"
+            [disabled]="disabled"
+            [respondiendo]="true"
+            (respuesta)="guardarRespuesta(pregunta.id, $event.valor, 'texto')">
+          </app-multiopcion>
+
+          <!-- Componente para preguntas de cuadricula (subsurvey) -->
+          <app-subsurvey
+            *ngIf="pregunta.tipoPregunta === 'cuadricula'"
+            [pregunta]="pregunta"
+            [disabled]="disabled"
+            [respondiendo]="true"
+            (respuestasEmitidas)="guardarRespuestasSubsurvey(pregunta.id, $event)">
+          </app-subsurvey>
+        </ng-container>
+      </div>
+
+      <!-- Botón para enviar -->
+      <div class="btn-container">
+        <ion-button expand="block" [disabled]="disabled" (click)="calculartiempopromedio()">
+          Enviar
+        </ion-button>
+      </div>
+    </form>
+
+    <!-- Si la encuesta no está disponible se muestra mensaje -->
+    <div *ngIf="!encuestaSeleccionada" class="no-encuesta">
+      <p>Encuesta no encontrada o no cargada aún.</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-card class="ion-padding">
+  <div>
+    <div class="header">
+      <p class="font-semibold">{{ pregunta?.enunciado }}</p>
+      <div class="icon-container">
+        <ion-button fill="clear" [disabled]="disabled" *ngIf="!respondiendo">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Contenedor de la escala de estrellas -->
+    <div class="rating-container">
+      <ng-container *ngFor="let opcion of pregunta?.opciones; let i = index">
+        <div (click)="calificar(i + 1)" class="star-icon">
+          <ion-icon name="star" [class.selected]="valorSeleccionado >= i + 1"></ion-icon>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="toggle-container">
+    <!-- Toggle Obligatoria -->
+    <div class="toggle-item">
+      <ion-toggle [disabled]="respondiendo || disabled" [checked]="pregunta?.obligatorio"
+        (ionChange)="toggleObligatoria()">
+      </ion-toggle>
+      <label>Obligatoria</label>
+    </div>
+  </div>
+</ion-card>

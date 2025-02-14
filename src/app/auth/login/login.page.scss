@@ -20,6 +20,12 @@ ion-padding container{
   margin-top: 17vh;
 }
 
+.login-logo {
+  width: 80px; // Ajusta el tamaño según necesites
+  height: 80px;
+  margin: 0 auto 10px auto; 
+  display: block; // Para centrar la imagen en el contenedor
+}
 
 .title {
   font-size: 1.25rem;

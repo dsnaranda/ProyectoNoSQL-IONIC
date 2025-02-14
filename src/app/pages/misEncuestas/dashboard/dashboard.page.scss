@@ -1,0 +1,126 @@
+/* ====== Estilos para el Header ====== */
+ion-header {
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-toolbar {
+    --background: #ffffff;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  ion-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    flex: 1;
+  }
+  
+  ion-buttons {
+    ion-button {
+      --color: #333;
+      ion-icon {
+        font-size: 22px;
+      }
+    }
+  }
+  
+  /* ====== Estilos para el Contenedor del Dashboard ====== */
+  .dashboard {
+    padding: 1rem;
+  }
+  
+  /* Grid para las tarjetas de estadísticas */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0.25rem;
+  }
+  
+  @media (min-width: 576px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Tarjetas de cada estadística */
+  .stat-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .stat-card h1 {
+    color: #6b7280; /* text-gray-500 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
+  
+  .stat-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.25rem;
+    margin-left: 0.5rem;
+  }
+  
+  .stat-info label {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937; /* text-gray-800 */
+  }
+  
+  /* Estilos para la sección de respuestas de texto */
+  .text-response-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-response-card ul {
+    list-style-type: disc;
+    margin-left: 1.25rem;
+  }
+  
+  /* ====== Responsividad para Móviles (ej.: iPhone 12 Pro ~390px de ancho) ====== */
+  @media (max-width: 450px) {
+    ion-toolbar {
+      padding: 0 8px;
+    }
+    
+    ion-title {
+      font-size: 18px;
+    }
+    
+    ion-buttons ion-button ion-icon {
+      font-size: 20px;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .stat-card h1 {
+      font-size: 1rem;
+    }
+    
+    .stat-info label {
+      font-size: 1.5rem;
+    }
+    
+    .text-response-card h3 {
+      font-size: 1rem;
+    }
+    
+    .text-response-card ul {
+      margin-left: 1rem;
+    }
+  }
+  

@@ -1,0 +1,32 @@
+<ion-card class="p-4 m-4">
+  <ion-card-header>
+    <ion-card-title class="font-semibold">{{ pregunta?.enunciado }}</ion-card-title>
+    <div class="flex flex-col">
+      <ion-button fill="clear" [disabled]="disabled" *ngIf="!respondiendo" (click)="toggleAction()">
+        <ion-icon name="trash-outline" size="large" color="medium"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card-header>
+
+  <!-- Opciones de selección (Radio buttons con texto) -->
+  <div class="space-y-4 mt-4">
+    <ng-container *ngFor="let opcion of pregunta?.opciones; let i = index">
+      <ion-item lines="none">
+        <ion-label class="flex items-center space-x-4 group cursor-pointer">
+          <ion-radio [disabled]="disabled" [value]="opcion" (ionSelect)="seleccionarOpcion(opcion)" name="opcion"></ion-radio>
+          <div class="flex-1 p-3 rounded-lg border transition-colors peer-checked:bg-[#585c84] peer-checked:text-white peer-checked:border-[#585c84] group-hover:bg-[#6a6f95] group-hover:border-[#6a6f95]">
+            <span>{{ opcion }}</span>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </div>
+
+  <!-- Controles adicionales -->
+  <div class="mt-4 ion-text-end">
+    <ion-item lines="none">
+      <ion-label position="floating" color="medium">Obligatoria</ion-label>
+      <ion-toggle [(ngModel)]="pregunta.obligatorio" [disabled]="respondiendo || disabled" (ionChange)="toggleObligatoria()"></ion-toggle>
+    </ion-item>
+  </div>
+</ion-card>

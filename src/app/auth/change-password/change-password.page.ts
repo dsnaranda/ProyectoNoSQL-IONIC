@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {IonAlert,IonInputPasswordToggle,IonCard,IonCardHeader,IonCardTitle,IonCardContent, IonItem, IonButton, IonContent, IonInput } from "@ionic/angular/standalone";
+import {IonAlert,IonInputPasswordToggle,IonCard,IonCardHeader,IonCardTitle,IonCardContent, IonItem, IonButton, IonContent, IonInput, IonLabel } from "@ionic/angular/standalone";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../servicios/server/login.service';
 import { Router } from '@angular/router';
+// import { RecaptchaModule } from "ng-recaptcha";
+// import { environment } from 'src/environments/environment.prod';
 
 
 
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
   standalone: true,
-  imports: [IonAlert,IonInput, IonInputPasswordToggle, ReactiveFormsModule, IonCard,IonCardHeader,IonCardTitle,IonCardContent, IonItem, IonButton, IonContent, CommonModule, FormsModule]
+  imports: [IonLabel, IonAlert,IonInput, IonInputPasswordToggle, ReactiveFormsModule, IonCard,IonCardHeader,IonCardTitle,IonCardContent, IonItem, IonButton, IonContent, CommonModule, FormsModule]
 })
 export class ChangePasswordPage implements OnInit {
 
@@ -29,11 +31,22 @@ export class ChangePasswordPage implements OnInit {
   mismatchAlertVisible = false;
   formErrorAlertVisible = false;
 
+  isCaptchaValid = false;
+  verificationForm: FormGroup;
+  generatedCode: string;
+
+
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router
-  ) {}
+  ) {
+    this.generatedCode = this.generateCode();
+    this.verificationForm = this.fb.group({
+      enteredCode: ['', [Validators.required, Validators.pattern('\\d{6}')]]
+    });
+  }
+
 
   ngOnInit(): void {
     this.loadUserData();
@@ -43,6 +56,14 @@ export class ChangePasswordPage implements OnInit {
         confirmarclave: ['', [Validators.required, Validators.minLength(6)]]
       }
     );
+  }
+
+  generateCode(): string {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+
+  isCodeValid(): boolean {
+    return this.verificationForm.value.enteredCode === this.generatedCode;
   }
 
   loadUserData(): void {
@@ -92,6 +113,16 @@ export class ChangePasswordPage implements OnInit {
     }
   }
   
-
- 
+  // get siteKey(){
+  //   return environment.recaptcha.siteKey;
+  // }
+  // captcharesolved(ev: string | null) {
+  //   if (ev) {
+  //     this.isCaptchaValid = true;
+  //     console.log('Captcha resuelto:', ev); // Muestra el token en la consola
+  //   } else {
+  //     this.isCaptchaValid = false;
+  //     console.log('Captcha no válido');
+  //   }
+  // } 
 }

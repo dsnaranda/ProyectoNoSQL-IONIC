@@ -23,5 +23,8 @@ export class DashboardHomeService {
     return this.http.put<any>(`${this.apiUrl}/cambiarEstado/${id}`, {});
   }
   
-
+  // Método para obtener las encuestas por área
+  obtenerEncuestasPorArea(area: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/devolverArea/${area}`);
+  }
 }

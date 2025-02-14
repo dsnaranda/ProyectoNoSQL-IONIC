@@ -1,0 +1,114 @@
+ion-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    margin: 10px;
+    padding: 16px;
+  
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Permite que se acomoden los elementos en pantallas pequeñas */
+      
+      p {
+        font-weight: bold;
+        color: #333;
+        font-size: 16px;
+        margin: 0;
+      }
+      
+      .icon-container {
+        ion-button {
+          --color: gray;
+          --padding-start: 0;
+          --padding-end: 0;
+        }
+      }
+    }
+  
+    .rating-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+  
+      .star-icon {
+        margin: 0 5px;
+        cursor: pointer;
+        
+        ion-icon {
+          font-size: 32px;
+          color: lightgray;
+        }
+        
+        /* Aseguramos que la clase 'selected' afecte al ion-icon */
+        &.selected,
+        ion-icon.selected {
+          color: #ffd700; // Color dorado para estrellas seleccionadas
+        }
+      }
+    }
+  
+    .toggle-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+  
+      .toggle-item {
+        display: flex;
+        align-items: center;
+        
+        label {
+          margin-left: 10px;
+          font-size: 14px;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  /* Ajustes responsivos para pantallas pequeñas (ej: iPhone 12 Pro y similares) */
+  @media (max-width: 450px) {
+    ion-card {
+      margin: 5px;
+      padding: 12px;
+  
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        p {
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+        
+        .icon-container {
+          align-self: flex-end;
+        }
+      }
+  
+      .rating-container {
+        margin-top: 8px;
+  
+        .star-icon {
+          margin: 0 3px;
+          
+          ion-icon {
+            font-size: 28px;
+          }
+        }
+      }
+  
+      .toggle-container {
+        margin-top: 10px;
+  
+        .toggle-item {
+          label {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  

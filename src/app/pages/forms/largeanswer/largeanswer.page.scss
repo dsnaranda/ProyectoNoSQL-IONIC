@@ -1,0 +1,77 @@
+ion-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Agrega margen para separarlo de los bordes en móviles */
+  }
+  
+  .pregunta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap; /* Permite que se ajusten elementos en pantallas pequeñas */
+  }
+  
+  .pregunta-texto {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    flex: 1 1 auto;
+    margin-right: 8px;
+  }
+  
+  ion-button {
+    flex-shrink: 0;
+  }
+  
+  ion-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 10px;
+    background: #f9f9f9;
+    font-size: 16px;
+  }
+  
+  .toggle-container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  ion-item {
+    --inner-padding-end: 0;
+    --background: transparent;
+    --padding-start: 0;
+  }
+  
+  ion-toggle {
+    --handle-background: #ffffff;
+    --background-checked: #007bff;
+    --handle-background-checked: #ffffff;
+  }
+  
+  /* Media query para móviles (por ejemplo, iPhone 12 Pro y dispositivos similares) */
+  @media (max-width: 450px) {
+    .pregunta-texto {
+      font-size: 14px; /* Se reduce ligeramente el tamaño del texto */
+    }
+  
+    ion-input {
+      padding: 6px;
+      font-size: 14px; /* Ajuste en el tamaño de fuente para inputs */
+    }
+  
+    .toggle-container {
+      margin-top: 12px;
+      gap: 8px;
+    }
+  
+    ion-card {
+      margin: 5px; /* Reduce márgenes para aprovechar mejor el espacio en pantallas pequeñas */
+    }
+  }
+  

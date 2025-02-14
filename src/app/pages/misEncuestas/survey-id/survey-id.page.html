@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Encuesta de {{ encuestaSeleccionada?.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="survey-container">
+  <div class="content-wrapper">
+    <div class="button-group">
+      <ion-button *ngIf="encuestaSeleccionada" (click)="compartirEncuesta(encuestaSeleccionada.id)" class="send-button">
+        Enviar
+      </ion-button>
+
+      <ion-button *ngIf="encuestaSeleccionada" (click)="verDashboard(encuestaSeleccionada.id)" class="view-button">
+        Ver respuestas
+        <ion-icon name="eye" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+
+    <form *ngIf="encuestaSeleccionada">
+      <div class="encuesta-titulo">
+        <label for="titulo-encuesta">
+          {{ encuestaSeleccionada.titulo || 'Título no disponible' }}
+        </label>
+      </div>
+
+      <div class="encuesta-objetivo">
+        <label for="objetivo-encuesta">
+          {{ encuestaSeleccionada.objetivo || 'Objetivo no disponible' }}
+        </label>
+      </div>
+
+      <div class="correo-container">
+        <div class="icon-wrapper">
+          <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1.49414 0.676514H15.5059C16.3297 0.676514 17 1.34679 17 2.17065V10.8294C17 11.6533 16.3297 12.3236 15.5059 12.3236H1.49414C0.670271 12.3236 0 11.6533 0 10.8294V2.17065C0 1.34679 0.670271 0.676514 1.49414 0.676514ZM1.68914 1.67261L1.88856 1.83866L7.90719 6.85037C8.25071 7.13638 8.74936 7.13638 9.09281 6.85037L15.1114 1.83866L15.3109 1.67261H1.68914ZM16.0039 2.17065L9.09281 7.85037C8.74936 8.13638 8.25071 8.13638 7.90719 7.85037L1.00391 2.17065V10.8294H16.0039V2.17065Z"
+              fill="black" />
+          </svg>
+        </div>
+        <input formControlName="correo" id="correo" type="correo" placeholder="Ingrese su correo" />
+      </div>
+
+      <div *ngIf="preguntasDetalles.length === 0" class="loading-text">Cargando preguntas...</div>
+
+      <div *ngIf="preguntasDetalles.length > 0">
+        <ng-container *ngFor="let pregunta of preguntasDetalles">
+          <!-- Pass disabled property to all question components -->
+          <app-largeanswer 
+            *ngIf="pregunta.tipoPregunta === 'texto'" 
+            [pregunta]="pregunta" 
+            [disabled]="true">
+          </app-largeanswer>
+          
+          <app-likerscale 
+            *ngIf="pregunta.tipoPregunta === 'escala'" 
+            [pregunta]="pregunta" 
+            [disabled]="true">
+          </app-likerscale>
+          
+          <app-multiopcion 
+            *ngIf="pregunta.tipoPregunta === 'seleccion'" 
+            [pregunta]="pregunta" 
+            [disabled]="true">
+          </app-multiopcion>
+          
+          <app-subsurvey 
+            *ngIf="pregunta.tipoPregunta === 'cuadricula'" 
+            [pregunta]="pregunta" 
+            [disabled]="true">
+          </app-subsurvey>
+        </ng-container>
+      </div>
+      </form>
+  </div>
+</ion-content>

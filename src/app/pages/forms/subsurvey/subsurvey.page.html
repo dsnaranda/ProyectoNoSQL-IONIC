@@ -1,0 +1,40 @@
+<ion-card class="ion-padding">
+  <!-- Encabezado de la pregunta -->
+  <ion-card-header>
+    <ion-card-title>{{ pregunta?.enunciado }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- Tabla de opciones (Escala de evaluación) -->
+    <div class="tabla">
+      <!-- Encabezados -->
+      <div class="fila encabezado">
+        <div class="celda"></div> <!-- Espacio vacío para la primera columna -->
+        <div *ngFor="let columna of ['Nunca', 'Poco Frecuente', 'Frecuente', 'Muy Frecuente', 'Siempre']; let columnaIndex = index" class="celda">
+          {{ columna }}
+        </div>
+      </div>
+
+      <!-- Filas de opciones -->
+      <div *ngFor="let fila of pregunta?.filas; let filaIndex = index" class="fila">
+        <div class="celda texto">{{ fila }}</div>
+        <div class="celda">
+          <ion-radio-group [name]="getRadioName(filaIndex)">
+            <ng-container *ngFor="let columna of ['Nunca', 'Poco Frecuente', 'Frecuente', 'Muy Frecuente', 'Siempre']; let columnaIndex = index">
+              <ion-radio [disabled]="disabled" [value]="getRadioValue(filaIndex, columnaIndex)"
+                (ionSelect)="onRadioChange(filaIndex, columnaIndex)">
+              </ion-radio>
+            </ng-container>
+          </ion-radio-group>
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+
+  <!-- Controles adicionales -->
+  <ion-footer class="footer">
+    <ion-toggle [disabled]="respondiendo || disabled" [(ngModel)]="pregunta.obligatorio" (ionChange)="toggleObligatoria()">
+      Obligatoria
+    </ion-toggle>
+  </ion-footer>
+</ion-card>

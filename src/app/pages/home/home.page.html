@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="titulo">
+    Bienvenido a <span class="resaltado">SurveyEngine!</span>
+  </h1>
+  <h2 class="saludo">Hola, {{ userName }}</h2>
+
+  <!-- Resumen de Encuestas -->
+  <div class="resumen">
+    <ion-card>
+      <ion-card-content>
+        <h2 class="subtitulo">Resumen de Encuestas</h2>
+        <p class="descripcion">Aquí puedes ver un resumen de las encuestas realizadas.</p>
+        <ul>
+          <li>
+            <span>Encuestas totales:</span>
+            <span class="totales">{{ totalEncuestas }}</span>
+          </li>
+          <li>
+            <span>Encuestas activas:</span>
+            <span class="activas">{{ encuestasActivas }}</span>
+          </li>
+          <li>
+            <span>Encuestas cerradas:</span>
+            <span class="cerradas">{{ encuestasCerradas }}</span>
+          </li>
+        </ul>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Tabla de Encuestas -->
+  <div class="tabla-container">
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="encabezado">
+            <ion-col>Título</ion-col>
+            <ion-col>Objetivo</ion-col>
+            <ion-col>Fecha</ion-col>
+            <ion-col>Estado</ion-col>
+            <ion-col>Área</ion-col>
+            <ion-col>Acciones</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let encuesta of dataSourceData">
+            <ion-col>{{ encuesta.titulo }}</ion-col>
+            <ion-col>{{ encuesta.objetivo }}</ion-col>
+            <ion-col>{{ encuesta.fecha_creacion | date }}</ion-col>
+            <ion-col>
+              <span [class.activo]="encuesta.estado === 'Activa'"
+                    [class.cerrado]="encuesta.estado === 'Cerrada'">
+                {{ encuesta.estado }}
+              </span>
+            </ion-col>
+            <ion-col>{{ encuesta.area }}</ion-col>
+            <ion-col>
+              <ion-button fill="outline" color="primary" (click)="onAccion(encuesta._id)">
+                Acción
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Paginación -->
+    <div class="paginacion">
+      <ion-label>Items por página:</ion-label>
+      <ion-select [(ngModel)]="pageSize" (ionChange)="onPaginateChange($event)">
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="15">15</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+</ion-content>

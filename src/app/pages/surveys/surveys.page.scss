@@ -4,8 +4,52 @@
   min-height: 100vh;
   background-color: #f3f4f6;
   padding: 16px;
+  --padding-bottom: 51px; /* Espacio extra al final */
 }
 
+/* Total de Resultados Encontrados */
+.total-resultados {
+  margin-top: 16px; /* Separa del header */
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.total-resultados ion-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Filtros */
+.filtro-container {
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  width: 100%;
+  background-color: #f3f4f6;
+}
+
+.combo {
+  margin-top: 20px;
+  width: 90%; /* Ajusta el ancho */
+  max-width: 400px; /* Máximo ancho */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 10px; /* Espaciado entre los elementos */
+}
+
+/* Botón para limpiar filtros */
+.clear-filters {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Mensaje y botón cuando no hay encuestas */
 .empty-container {
   display: flex;
   flex-direction: column;
@@ -35,11 +79,13 @@
   background-color: #1e40af;
 }
 
+/* Grid de encuestas */
 .encuestas-grid {
   display: grid;
-  gap: 16px;
+  gap: 10px;
   grid-template-columns: 1fr;
-  background-color: #f3f4f6;;
+  background-color: #f3f4f6;
+  margin-bottom: 55px;
 }
 
 @media (min-width: 768px) {
@@ -54,6 +100,7 @@
   }
 }
 
+/* Tarjeta de cada encuesta */
 .encuesta-card {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -62,19 +109,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .encuesta-card h2 {
   font-size: 1.125rem;
   font-weight: bold;
   color: #1e3a8a;
+  margin-bottom: 8px;
 }
 
 .encuesta-card p {
-  color: #6b7280;
   margin-top: 8px;
+  font-size: 0.95rem;
+  color: #374151;
 }
 
+/* Botón de menú (popover) en cada tarjeta */
 .menu-container {
   display: flex;
   justify-content: flex-end;
@@ -90,6 +141,95 @@ ion-button:hover {
   --color: #1e3a8a;
 }
 
+/* Filtros de búsqueda */
+.filtro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #f3f4f6;
+  margin-bottom: 1rem;
+}
 
+.combo {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  padding: 8px;
+}
 
+/* Estilos para títulos y subtítulos en las tarjetas */
+.title {
+  font-size: 18px;
+  line-height: 28px;
+  color: #1e40af;
+}
 
+.sub {
+  color: #d1d5db;
+}
+
+/* ====== Responsividad para móviles (ej.: iPhone 13 Pro Max ~428px de ancho) ====== */
+@media (max-width: 450px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .empty-container {
+    gap: 12px;
+  }
+  
+  .empty-text {
+    font-size: 1.1rem;
+  }
+  
+  .create-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .encuestas-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 35px;
+  }
+  
+  .encuesta-card {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .encuesta-card h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .encuesta-card p {
+    font-size: 0.85rem;
+  }
+  
+  .menu-container {
+    margin-top: 12px;
+  }
+  
+  /* Ajustes para el combo de filtros */
+  .filtro-container {
+    margin-bottom: 0.5rem;
+  }
+  
+  .combo {
+    width: 100%;
+    max-width: none;
+    margin-top: 10px;
+    padding: 6px;
+  }
+  
+  /* Reducir el tamaño de los títulos en la tarjeta de encuesta */
+  .title {
+    font-size: 16px;
+  }
+}

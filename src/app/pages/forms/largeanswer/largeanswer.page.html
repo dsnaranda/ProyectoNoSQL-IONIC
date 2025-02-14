@@ -1,0 +1,36 @@
+<ion-card-content>
+  <div class="pregunta-header">
+    <p class="pregunta-texto">{{ pregunta?.enunciado }}</p>
+    <ion-button fill="clear" color="medium" [disabled]="!respondiendo && disabled" *ngIf="!respondiendo">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <ion-input 
+    [disabled]="disabled" 
+    type="text" 
+    [(ngModel)]="respuestaTexto" 
+    (ngModelChange)="onRespuestaChange()"
+    [placeholder]="'Escriba su respuesta ' + pregunta?.id">
+  </ion-input>
+
+  <div class="toggle-container">
+    <ion-item lines="none">
+      <ion-label>Respuesta larga</ion-label>
+      <ion-toggle 
+        [disabled]="respondiendo || disabled" 
+        [checked]="pregunta?.esTextoLargo"
+        (ionChange)="toggleRespuestaLarga()">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Obligatoria</ion-label>
+      <ion-toggle 
+        [disabled]="respondiendo || disabled" 
+        [checked]="pregunta?.obligatorio"
+        (ionChange)="toggleObligatoria()">
+      </ion-toggle>
+    </ion-item>
+  </div>
+</ion-card-content>

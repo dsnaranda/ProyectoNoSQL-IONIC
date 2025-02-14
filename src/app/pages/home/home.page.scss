@@ -1,0 +1,152 @@
+ion-content {
+    --background: #ffffff; /* Fondo blanco */
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+  }
+    
+  .saludo {
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+    color: #181818;
+    margin: 0 auto;
+  }
+
+  .titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #181818;
+    text-align: center;
+  }
+  
+  .resaltado {
+    color: #4e5a9f;
+  }
+
+  
+  
+  .resumen {
+    margin-top: 15px;
+  }
+  
+  ion-card {
+    background-color: #ffffff !important; /* Asegura fondo blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Suave sombra */
+    border-radius: 8px;
+  }
+  
+  .subtitulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .descripcion {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .bold {
+    font-weight: bold;
+    color: #000; /* Solo como fallback si deseas */
+  }
+  
+  /* Colores específicos para cada dato */
+  .totales {
+    font-weight: bold;
+    color: #000; /* Negro o el que prefieras */
+  }
+  
+  .activas {
+    font-weight: bold;
+    color: green; /* Ajusta el color a tu gusto */
+  }
+  
+  .cerradas {
+    font-weight: bold;
+    color: red; /* Ajusta el color a tu gusto */
+  }
+  
+  .activo {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .cerrado {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .lista {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  /* Contenedor de la tabla */
+  .tabla-container {
+    margin-top: 15px;
+    overflow-x: auto;
+  }
+  
+  .encabezado {
+    font-weight: bold;
+    background-color: #4e5a9f;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Ajustes para mantener tabla horizontal en pantallas medianas */
+  ion-grid {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  ion-row {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  ion-col {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    min-width: 100px;
+  }
+  
+  /* RESPONSIVIDAD MEJORADA */
+  /* Se mantiene en horizontal en iPads y tablets (>= 600px) */
+  /* Solo cambia a formato vertical en móviles más pequeños */
+  
+  @media (max-width: 399px), (max-height: 415px) { /* SOLO para móviles pequeños */
+    ion-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    ion-col {
+      width: 100%;
+      padding: 5px 0;
+    }
+  
+    ion-button {
+      width: 100%;
+      margin-top: 5px;
+    }
+  }
+  
+  /* Paginación */
+  .paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
